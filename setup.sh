@@ -36,7 +36,8 @@ apk --update add cmake gcc g++ linux-headers libffi-dev openssl-dev \
     lapack        
 
 ##system dependency
-apk --update add python3
+apk --update add python3 \
+    python3-dev 
 
 ## variables 
 DS_ROOT=`dirname "$0"`
