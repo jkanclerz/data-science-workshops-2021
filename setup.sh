@@ -47,6 +47,9 @@ python3.8 -m venv ${DS_ROOT}/.venv
 ## Install python dependency
 ${DS_ROOT}/.venv/bin/pip install -r ${DS_ROOT}/requirements.txt
 
+## activate  venv
+source ${DS_ROOT}/.venv/bin/activate
+
 echo "We are ready to go!!!!"
 echo "Yout ip: ${MY_IP}"
 echo "To start jupyter visit: cd ds-workshop"
