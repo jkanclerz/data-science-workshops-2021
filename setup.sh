@@ -41,6 +41,7 @@ apk --update add python3 \
 
 ## variables 
 DS_ROOT=`dirname "$0"`
+MY_IP=`/sbin/ip -4 -o addr show dev eth1| awk '{split($4,a,"/");print a[1]}'`
 
 ## Ensure venv exists
 python3.8 -m venv ${DS_ROOT}/.venv
