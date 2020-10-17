@@ -5,8 +5,8 @@
 
 ## REPOS
 #REPOS
-echo "http://ftp.icm.edu.pl/pub/Linux/distributions/alpine/v3.11/main" > /etc/apk/repositories
-echo "http://ftp.icm.edu.pl/pub/Linux/distributions/alpine/v3.11/community" >> /etc/apk/repositories
+echo "http://ftp.icm.edu.pl/pub/Linux/distributions/alpine/v3.12/main" > /etc/apk/repositories
+echo "http://ftp.icm.edu.pl/pub/Linux/distributions/alpine/v3.12/community" >> /etc/apk/repositories
 echo "#http://ftp.icm.edu.pl/pub/Linux/distributions/alpine/edge/main" >> /etc/apk/repositories
 echo "#http://ftp.icm.edu.pl/pub/Linux/distributions/alpine/edge/community" >> /etc/apk/repositories
 echo "#http://ftp.icm.edu.pl/pub/Linux/distributions/alpine/edge/testing" >> /etc/apk/repositories
