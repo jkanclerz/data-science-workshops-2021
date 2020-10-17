@@ -1,7 +1,31 @@
 #!/usr/bin/env sh
 
 ## Cron restart
-rc-service crond restart
+#rc-service crond restart
+
+##system dependency
+apk --update add cmake gcc g++ linux-headers libffi-dev openssl-dev \
+	openblas openblas-dev \
+	automake \
+	libgfortran \
+	build-base \
+	freetype \
+	libgcc \
+	subversion \
+    tar gzip \
+	libxml2 \
+	libxml2-dev \
+	libxslt-dev gfortran \
+	libxslt \
+    libxslt-dev \
+    libgcc \
+    musl \
+    libgfortran \
+	freetype-dev \
+    postgresql-dev \
+    openblas \
+    lapack        
+
 
 ## variables 
 DS_ROOT=`dirname "$0"`
