@@ -11,6 +11,7 @@ echo "#http://ftp.icm.edu.pl/pub/Linux/distributions/alpine/edge/main" >> /etc/a
 echo "#http://ftp.icm.edu.pl/pub/Linux/distributions/alpine/edge/community" >> /etc/apk/repositories
 echo "#http://ftp.icm.edu.pl/pub/Linux/distributions/alpine/edge/testing" >> /etc/apk/repositories
 
+
 ##system dependency
 apk --update add cmake gcc g++ linux-headers libffi-dev openssl-dev \
 	openblas openblas-dev \
