@@ -42,6 +42,9 @@ apk --update add python3 \
 ## variables 
 DS_ROOT=`dirname "$0"`
 MY_IP=`/sbin/ip -4 -o addr show dev eth1| awk '{split($4,a,"/");print a[1]}'`
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
 
 ## Ensure venv exists
 python3.8 -m venv ${DS_ROOT}/.venv
@@ -52,9 +55,10 @@ ${DS_ROOT}/.venv/bin/pip install -r ${DS_ROOT}/requirements.txt
 source ${DS_ROOT}/.venv/bin/activate
 
 echo "We are ready to go!!!!"
-echo "Yout ip: ${MY_IP}"
+echo "Your ip is: ${MY_IP}"
 echo "To start jupyter visit: cd ds-workshop"
-echo "activate venv: source .venv/bin/activate"
-echo "type: jupyter notebook"
-echo "In your browser type: http://${MY_IP}:8888"
+echo "then activate venv: source .venv/bin/activate"
+echo "and type: jupyter notebook"
+echo "Finallu type: http://${MY_IP}:8888 in your browser"
 echo "Happy codding :)"
+echo -e "I ${RED}love${NC} Stack Overflow"
