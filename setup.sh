@@ -54,6 +54,15 @@ ${DS_ROOT}/.venv/bin/pip install -r ${DS_ROOT}/requirements.txt
 ## activate  venv
 source ${DS_ROOT}/.venv/bin/activate
 
+
+## cp jupyter cfg in place
+if [ ! -d "~/.jupyter" ]; then
+mkdir -p ~/.jupyter;
+fi
+
+cp ${DS_ROOT}/files/jupyter-cfg/jupyter_notebook_config.json ~/.jupyter/jupyter_notebook_config.json
+cp ${DS_ROOT}/files/jupyter-cfg/jupyter_notebook_config.py ~/.jupyter/jupyter_notebook_config.py
+
 echo "We are ready to go!!!!"
 echo "Your ip is: ${MY_IP}"
 echo -e "To start jupyter visit: ${GREEN}cd ds-workshop${NC}"
