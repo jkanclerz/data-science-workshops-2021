@@ -1,2 +1,5 @@
 jupyter
 wheel
+pandas
+seaborn
+matplotlib
