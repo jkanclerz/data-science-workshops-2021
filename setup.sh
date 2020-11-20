@@ -88,7 +88,8 @@ docker cp video_movieDetails.bson  ds-workshop_mongodb_1:/tmp/details.bson
 docker exec ds-workshop_mongodb_1 bash -c "cd /tmp; mongorestore --db datascience --drop --collection movies details.bson"
 docker exec ds-workshop_mongodb_1 bash -c "cd /tmp; mongorestore --db datascience --drop --collection films video.bson"
 
-clear;
+# clear;
+
 python3 -c "import this";
 
 echo "\n\n"
