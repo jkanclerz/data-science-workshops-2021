@@ -80,6 +80,18 @@ docker-compose -f ${DS_ROOT}/docker-compose.yaml up --no-recreate -d
 docker exec ds-workshop_datascience_1 bash -c "echo 'create database warehouse;' | psql -U datascience"
 docker exec ds-workshop_datascience_1 bash -c 'gunzip < /events.sql.gz |  psql -U datascience'
 
+wget https://github.com/SouthbankSoftware/dbkoda-data/raw/master/SampleCollections/dump/SampleCollections/video_movies.bson
+wget https://github.com/SouthbankSoftware/dbkoda-data/raw/master/SampleCollections/dump/SampleCollections/video_movieDetails.bson
+
+docker cp video_movies.bson  ds-workshop_mongodb_1:/tmp/video.bson
+docker cp video_movieDetails.bson  ds-workshop_mongodb_1:/tmp/details.bson
+docker exec ds-workshop_mongodb_1 bash -c "cd /tmp; mongorestore --db datascience --drop --collection movies details.bson"
+docker exec ds-workshop_mongodb_1 bash -c "cd /tmp; mongorestore --db datascience --drop --collection films video.bson"
+
+clear;
+python3 -c "import this";
+
+
 echo "We are ready to go!!!!"
 echo "Your ip is: ${MY_IP}"
 echo -e "DB explorer available at: ${GREEN}http://${MY_IP}:8080${NC} in your browser"
