@@ -76,9 +76,15 @@ cp ${DS_ROOT}/files/jupyter-cfg/jupyter_notebook_config.py ~/.jupyter/jupyter_no
 
 docker-compose -f ${DS_ROOT}/docker-compose.yaml up --no-recreate -d
 
+## fill postgress
+docker exec ds-workshop_datascience_1 bash -c "echo 'create database warehouse;' | psql -U datascience"
+docker exec ds-workshop_datascience_1 bash -c 'gunzip < /events.sql.gz |  psql -U datascience'
 
 echo "We are ready to go!!!!"
 echo "Your ip is: ${MY_IP}"
+echo -e "DB explorer available at: ${GREEN}http://${MY_IP}:8080${NC} in your browser"
+echo -e "PostgreSQL server available at: ${GREEN}http://${MY_IP}:5432${NC}"
+echo -e "MongoDB server available at: ${GREEN}http://${MY_IP}:27017${NC}"
 echo -e "To start jupyter visit: ${GREEN}cd ds-workshop${NC}"
 echo -e "then activate venv: ${GREEN}source .venv/bin/activate${NC}"
 echo -e "and type: ${GREEN}jupyter notebook${NC}"
