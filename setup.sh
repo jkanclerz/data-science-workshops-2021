@@ -41,6 +41,10 @@ apk --update add docker \
 	docker-compose \
 	tree
 
+rc-update add docker
+service docker start
+
+
 ##system dependency
 apk --update add python3 \
     python3-dev 
