@@ -91,7 +91,7 @@ docker exec ds-workshop_mongodb_1 bash -c "cd /tmp; mongorestore --db datascienc
 clear;
 python3 -c "import this";
 
-
+echo "\n\n"
 echo "We are ready to go!!!!"
 echo "Your ip is: ${MY_IP}"
 echo -e "DB explorer available at: ${GREEN}http://${MY_IP}:8080${NC} in your browser"
