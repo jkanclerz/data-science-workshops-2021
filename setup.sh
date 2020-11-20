@@ -63,6 +63,17 @@ fi
 cp ${DS_ROOT}/files/jupyter-cfg/jupyter_notebook_config.json ~/.jupyter/jupyter_notebook_config.json
 cp ${DS_ROOT}/files/jupyter-cfg/jupyter_notebook_config.py ~/.jupyter/jupyter_notebook_config.py
 
+
+## postgress
+apk add postgresql postgresql-dev
+rc-update add postgresql
+rc-service postgresql start
+##psql
+psql -U postgres -c "CREATE ROLE datascience LOGIN PASSWORD 'datascience';";
+psql -U postgres -c "CREATE DATABASE datascience WITH OWNER = datascience;";
+psql -U datascience -c "select 1;";
+
+
 echo "We are ready to go!!!!"
 echo "Your ip is: ${MY_IP}"
 echo -e "To start jupyter visit: ${GREEN}cd ds-workshop${NC}"
