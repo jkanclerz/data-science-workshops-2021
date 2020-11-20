@@ -37,8 +37,8 @@ apk --update add cmake gcc g++ linux-headers libffi-dev openssl-dev \
 	wget
 
 
-RUN apk --update add libxml2-dev libxslt-dev libffi-dev gcc musl-dev libgcc openssl-dev curl
-apk add --update jpeg-dev zlib-dev freetype-dev lcms2-dev openjpeg-dev tiff-dev tk-dev tcl-dev
+apk --update add libxml2-dev libxslt-dev libffi-dev gcc musl-dev libgcc openssl-dev curl
+apk --update add  jpeg-dev zlib-dev freetype-dev lcms2-dev openjpeg-dev tiff-dev tk-dev tcl-dev
 ## Docker dep
 apk --update add docker \
 	docker-compose \
