@@ -35,6 +35,12 @@ apk --update add cmake gcc g++ linux-headers libffi-dev openssl-dev \
     openblas \
     lapack        
 
+
+## Docker dep
+apk --update add docker \
+	docker-compose \
+	tree
+
 ##system dependency
 apk --update add python3 \
     python3-dev 
@@ -64,14 +70,7 @@ cp ${DS_ROOT}/files/jupyter-cfg/jupyter_notebook_config.json ~/.jupyter/jupyter_
 cp ${DS_ROOT}/files/jupyter-cfg/jupyter_notebook_config.py ~/.jupyter/jupyter_notebook_config.py
 
 
-## postgress
-apk add postgresql postgresql-dev
-rc-update add postgresql
-rc-service postgresql start
-##psql
-psql -U postgres -c "CREATE ROLE datascience LOGIN PASSWORD 'datascience';";
-psql -U postgres -c "CREATE DATABASE datascience WITH OWNER = datascience;";
-psql -U datascience -c "select 1;";
+docker-compose -f ${DS_ROOT}/docker-compose.yaml up --no-recreate -d
 
 
 echo "We are ready to go!!!!"

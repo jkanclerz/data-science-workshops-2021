@@ -1,0 +1,19 @@
+version: '3.1'
+services :
+  datascience:
+    image: postgres:13-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: datascience
+      POSTGRES_PASSWORD: datascience
+      POSTGRES_DB: datascience
+    restart: always
+ 
+  admin:
+    image: adminer
+    restart: always
+    depends_on: 
+      - datascience
+    ports:
+      - 8080:8080
