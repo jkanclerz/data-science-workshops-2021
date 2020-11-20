@@ -81,8 +81,8 @@ docker-compose -f ${DS_ROOT}/docker-compose.yaml up --no-recreate -d
 docker exec ds-workshop_datascience_1 bash -c "echo 'create database warehouse;' | psql -U datascience"
 docker exec ds-workshop_datascience_1 bash -c 'gunzip < /events.sql.gz |  psql -U datascience'
 
-wget https://github.com/SouthbankSoftware/dbkoda-data/raw/master/SampleCollections/dump/SampleCollections/video_movies.bson
-wget https://github.com/SouthbankSoftware/dbkoda-data/raw/master/SampleCollections/dump/SampleCollections/video_movieDetails.bson
+wget -nc https://github.com/SouthbankSoftware/dbkoda-data/raw/master/SampleCollections/dump/SampleCollections/video_movies.bson
+wget -nc https://github.com/SouthbankSoftware/dbkoda-data/raw/master/SampleCollections/dump/SampleCollections/video_movieDetails.bson
 
 docker cp video_movies.bson  ds-workshop_mongodb_1:/tmp/video.bson
 docker cp video_movieDetails.bson  ds-workshop_mongodb_1:/tmp/details.bson
