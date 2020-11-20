@@ -33,7 +33,8 @@ apk --update add cmake gcc g++ linux-headers libffi-dev openssl-dev \
 	freetype-dev \
     postgresql-dev \
     openblas \
-    lapack        
+    lapack \ 
+	wget
 
 
 ## Docker dep
