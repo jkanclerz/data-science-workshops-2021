@@ -3,5 +3,3 @@
 cd ~/ds-workshop && git reset --hard && git pull origin master && cd;
 
 ~/ds-workshop/setup.sh
-
-echo "updated..."
