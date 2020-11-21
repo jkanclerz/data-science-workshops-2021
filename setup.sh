@@ -59,6 +59,9 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
+## update self-update
+cat ${DS_ROOT}/scripts/self-update > ~/bin/self-update
+
 ## Ensure venv exists
 python3.8 -m venv ${DS_ROOT}/.venv
 ## Install python dependency
@@ -66,6 +69,7 @@ ${DS_ROOT}/.venv/bin/pip install -r ${DS_ROOT}/requirements.txt
 
 ## activate  venv
 source ${DS_ROOT}/.venv/bin/activate
+
 
 
 ## cp jupyter cfg in place
