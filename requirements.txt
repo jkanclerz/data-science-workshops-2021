@@ -6,4 +6,5 @@ matplotlib
 requests
 numpy
 scipy
+pymongo
 pyspark==3.0.0
