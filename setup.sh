@@ -60,7 +60,7 @@ GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
 ## update self-update
-cat ${DS_ROOT}/scripts/self-update > ~/bin/self-update
+cat ${DS_ROOT}/files/scripts/self-update > ~/bin/self-update
 
 ## Ensure venv exists
 python3.8 -m venv ${DS_ROOT}/.venv
