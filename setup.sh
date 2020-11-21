@@ -80,6 +80,8 @@ fi
 cp ${DS_ROOT}/files/jupyter-cfg/jupyter_notebook_config.json ~/.jupyter/jupyter_notebook_config.json
 cp ${DS_ROOT}/files/jupyter-cfg/jupyter_notebook_config.py ~/.jupyter/jupyter_notebook_config.py
 
+cd ${DS_ROOT}/dockers && bash build.sh
+
 
 docker-compose -f ${DS_ROOT}/docker-compose.yaml up --no-recreate -d
 

@@ -1,5 +1,66 @@
-version: '3.1'
+version: '3.6'
+
+volumes:
+  shared-workspace:
+    name: "hdfs-fake-1"
+    driver: local
+
+networks:
+    cluster-network-1:
+        attachable: true
+
 services :
+  jupyterlab:
+    image: jupyterlab
+    container_name: jupyterlab
+    ports:
+      - 8088:8888
+    volumes:
+      - shared-workspace:/opt/workspace
+    networks:
+      - cluster-network-1
+  
+  spark-master:
+    image: spark-master
+    container_name: spark-master
+    ports:
+      - 8001:8080
+      - 7077:7077
+    volumes:
+      - shared-workspace:/opt/workspace
+    networks:
+      - cluster-network-1
+
+  spark-worker-1:
+    image: spark-worker
+    container_name: spark-worker-1
+    environment:
+      - SPARK_WORKER_CORES=2
+      - SPARK_WORKER_MEMORY=1g
+    ports:
+      - 8002:8081
+    volumes:
+      - shared-workspace:/opt/workspace
+    depends_on:
+      - spark-master
+    networks:
+      - cluster-network-1
+  
+  spark-worker-2:
+    image: spark-worker
+    container_name: spark-worker-2
+    environment:
+      - SPARK_WORKER_CORES=2
+      - SPARK_WORKER_MEMORY=1g
+    ports:
+      - 8003:8081
+    volumes:
+      - shared-workspace:/opt/workspace
+    depends_on:
+      - spark-master
+    networks:
+      - cluster-network-1
+
   datascience:
     image: postgres:13-alpine
     ports:
@@ -12,9 +73,12 @@ services :
  
   mongodb:
     image: mongo:3-xenial
+    container_name: mongodb
     ports:
       - "27017:27017"
     restart: always
+    networks:
+      - cluster-network-1
   
   redis:
     image: redis:6-alpine
