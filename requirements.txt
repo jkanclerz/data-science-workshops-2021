@@ -3,3 +3,6 @@ wheel
 pandas
 seaborn
 matplotlib
+requests
+numpy
+scipy
