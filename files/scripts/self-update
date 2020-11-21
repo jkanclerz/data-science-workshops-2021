@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd ~/ds-workshop && git pull origin master && cd;
+
+~/ds-workshop/setup.sh
