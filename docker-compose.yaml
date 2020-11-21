@@ -2,7 +2,7 @@ version: '3.6'
 
 volumes:
   shared-workspace:
-    name: "hdfs-fake-1"
+    name: "hdfs-fake-2"
     driver: local
 
 networks:
@@ -16,7 +16,7 @@ services :
     ports:
       - 8088:8888
     volumes:
-      - shared-workspace:/opt/workspace
+      - ./:/opt/workspace
     networks:
       - cluster-network-1
   
@@ -27,7 +27,7 @@ services :
       - 8001:8080
       - 7077:7077
     volumes:
-      - shared-workspace:/opt/workspace
+      - ./:/opt/workspace
     networks:
       - cluster-network-1
 
@@ -40,7 +40,7 @@ services :
     ports:
       - 8002:8081
     volumes:
-      - shared-workspace:/opt/workspace
+      - ./:/opt/workspace
     depends_on:
       - spark-master
     networks:
@@ -55,7 +55,7 @@ services :
     ports:
       - 8003:8081
     volumes:
-      - shared-workspace:/opt/workspace
+      - ./:/opt/workspace
     depends_on:
       - spark-master
     networks:
