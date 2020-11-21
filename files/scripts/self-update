@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ~/ds-workshop && git pull origin master && cd;
+cd ~/ds-workshop && git reset --hard && git pull origin master && cd;
 
 ~/ds-workshop/setup.sh
 
