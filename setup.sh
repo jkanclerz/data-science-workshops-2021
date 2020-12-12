@@ -68,8 +68,6 @@ cat ${DS_ROOT}/files/motd > /etc/motd
 ## Ensure venv exists
 python3.8 -m venv ${DS_ROOT}/.venv
 ## Install python dependency
-${DS_ROOT}/.venv/bin/pip install wheel
-${DS_ROOT}/.venv/bin/pip install -r ${DS_ROOT}/requirements.txt
 
 ## activate  venv
 source ${DS_ROOT}/.venv/bin/activate
