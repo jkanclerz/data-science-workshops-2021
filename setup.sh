@@ -37,7 +37,7 @@ apk --update add cmake gcc g++ linux-headers libffi-dev openssl-dev \
 	wget
 
 
-apk --update add libxml2-dev libxslt-dev libffi-dev gcc musl-dev libgcc openssl-dev curl
+apk --update add libxml2-dev libxslt-dev libffi-dev gcc musl-dev libgcc openssl-dev
 apk --update add  jpeg-dev zlib-dev freetype-dev lcms2-dev openjpeg-dev tiff-dev tk-dev tcl-dev
 ## Docker dep
 apk --update add docker \
@@ -50,7 +50,8 @@ service docker start
 
 ##system dependency
 apk --update add python3 \
-    python3-dev 
+    python3-dev \
+	py3-pyzmq
 
 ## variables 
 DS_ROOT=`dirname "$0"`
@@ -61,10 +62,12 @@ NC='\033[0m' # No Color
 
 ## update self-update
 cat ${DS_ROOT}/files/scripts/self-update > ~/bin/self-update
+chmod +x ~/bin/self-update
 
 ## Ensure venv exists
 python3.8 -m venv ${DS_ROOT}/.venv
 ## Install python dependency
+${DS_ROOT}/.venv/bin/pip install wheel
 ${DS_ROOT}/.venv/bin/pip install -r ${DS_ROOT}/requirements.txt
 
 ## activate  venv
