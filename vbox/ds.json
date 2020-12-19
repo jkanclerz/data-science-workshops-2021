@@ -1,0 +1,88 @@
+{
+    "variables": {
+      "iso": "https://dl-cdn.alpinelinux.org/alpine/v3.12/releases/x86_64/alpine-virt-3.12.2-x86_64.iso",
+      "checksum": "146756d7c3436fd912594f3e3597c8887ce9f8e4c8e5124fc2c0305badf67ee1",
+      "password": "Type_your_password_here"
+    },
+    "builders": [
+      {
+        "type": "virtualbox-iso",
+        "iso_url": "{{ user `iso` }}",
+        "iso_checksum": "sha256:{{ user `checksum` }}",
+        "vm_name": "DataScienceVM",
+        "guest_os_type": "Linux_64",
+        "ssh_username": "root",
+        "ssh_password": "{{user `password`}}",
+        "ssh_port": 22,
+        "ssh_wait_timeout": "600s",
+        "vboxmanage": [
+          ["modifyvm", "{{.Name}}", "--memory", "2048"],
+          ["modifyvm", "{{.Name}}", "--cpus", "2"],
+          ["modifyvm", "{{.Name}}", "--audio", "none"],
+          [
+            "modifyvm",
+            "{{.Name}}",
+            "--nic2",
+            "hostonly"
+          ],
+          [
+            "modifyvm",
+            "{{.Name}}",
+            "--hostonlyadapter2",
+            "vboxnet0"
+          ]
+        ],
+        "disk_size": "20480",
+        "http_directory": "http",
+        "boot_command": [
+            "root<enter><wait>",
+            "passwd<enter><wait>{{user `password`}}<enter><wait>{{user `password`}}<enter><wait>",
+            "setup-interfaces<enter><wait><enter><wait><enter><wait><enter><wait><enter><wait><enter><wait>",
+            "/etc/init.d/networking start<enter><wait10>",
+            "setup-sshd -c openssh<enter><wait>",
+            "echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config<enter><wait>",
+            "/etc/init.d/sshd restart<enter><wait5>"
+          ],
+          "shutdown_command": "poweroff"
+      }
+    ],
+    "provisioners": [
+        {
+          "type": "file",
+          "source": "answerfile",
+          "destination": "/tmp/answerfile"
+        },
+        {
+          "type": "shell",
+          "expect_disconnect": true,
+          "inline": [
+            "echo '{{user `password`}}\n{{user `password`}}\ny\n' | setup-alpine -f /tmp/answerfile",
+            "/etc/init.d/sshd stop && reboot"
+          ]
+        },
+        {
+          "type": "shell",
+          "expect_disconnect": true,
+          "pause_before": "10s",
+          "inline": [
+            "sed -i -e 's/^#http/http/g' /etc/apk/repositories"
+          ]
+        },
+        {
+            "type": "shell",
+            "script": "init.sh",
+            "pause_before": "10s",
+            "timeout": "10s"
+        },
+        {
+            "type": "shell",
+            "expect_disconnect": true,
+            "pause_before": "10s",
+            "inline": [
+              "sh ~/ds-workshop/setup.sh"
+            ]
+        }
+          
+    ]
+    
+}

@@ -70,6 +70,8 @@ services :
       POSTGRES_PASSWORD: datascience
       POSTGRES_DB: datascience
     restart: always
+    networks: 
+      - cluster-network-1
  
   mongodb:
     image: mongo:3-xenial
@@ -93,3 +95,5 @@ services :
       - datascience
     ports:
       - 8080:8080
+    networks: 
+      - cluster-network-1

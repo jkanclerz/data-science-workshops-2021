@@ -50,8 +50,7 @@ service docker start
 
 ##system dependency
 apk --update add python3 \
-    python3-dev \
-	py3-pyzmq
+    python3-dev 
 
 ## variables 
 DS_ROOT=`dirname "$0"`
@@ -62,12 +61,11 @@ NC='\033[0m' # No Color
 
 ## update self-update
 cat ${DS_ROOT}/files/scripts/self-update > ~/bin/self-update
-chmod +x ~/bin/self-update
-cat ${DS_ROOT}/files/motd > /etc/motd
 
 ## Ensure venv exists
 python3.8 -m venv ${DS_ROOT}/.venv
 ## Install python dependency
+${DS_ROOT}/.venv/bin/pip install -r ${DS_ROOT}/requirements.txt
 
 ## activate  venv
 source ${DS_ROOT}/.venv/bin/activate
@@ -85,7 +83,7 @@ cp ${DS_ROOT}/files/jupyter-cfg/jupyter_notebook_config.py ~/.jupyter/jupyter_no
 cd ${DS_ROOT}/dockers && bash build.sh
 
 
-docker-compose -f ${DS_ROOT}/docker-compose.yaml up --force-recreate -d
+docker-compose -f ${DS_ROOT}/docker-compose.yaml up --no-recreate -d
 
 ## fill postgress
 docker exec ds-workshop_datascience_1 bash -c "echo 'create database warehouse;' | psql -U datascience"
@@ -112,5 +110,5 @@ echo -e "MongoDB server available at: ${GREEN}http://${MY_IP}:27017${NC}"
 echo -e "To start jupyter visit: ${GREEN}cd ds-workshop${NC}"
 echo -e "then activate venv: ${GREEN}source .venv/bin/activate${NC}"
 echo -e "and type: ${GREEN}jupyter notebook${NC}"
-echo -e "Finallu type: ${GREEN}http://${MY_IP}:8088${NC} in your browser"
+echo -e "Finallu type: ${GREEN}http://${MY_IP}:8888${NC} in your browser"
 echo -e "Happy codding ${GREEN}:)${NC}"

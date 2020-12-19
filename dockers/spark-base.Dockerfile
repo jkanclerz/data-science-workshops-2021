@@ -18,6 +18,11 @@ ENV SPARK_MASTER_HOST spark-master
 ENV SPARK_MASTER_PORT 7077
 ENV PYSPARK_PYTHON python3
 
+RUN curl https://repo1.maven.org/maven2/org/mongodb/spark/mongo-spark-connector_2.12/3.0.0/mongo-spark-connector_2.12-3.0.0.jar -o ${SPARK_HOME}/jars/mongo-spark-connector_2.12-3.0.0.jar
+
+RUN curl https://repo1.maven.org/maven2/org/mongodb/mongo-java-driver/3.12.7/mongo-java-driver-3.12.7.jar -o ${SPARK_HOME}/jars/mongo-java-driver-3.12.7.jar
+
+RUN curl https://repo1.maven.org/maven2/org/postgresql/postgresql/42.2.18/postgresql-42.2.18.jar -o ${SPARK_HOME}/jars/postgresql-42.2.18.jar
 # -- Runtime
 
 WORKDIR ${SPARK_HOME}
