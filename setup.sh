@@ -13,9 +13,7 @@ echo "#http://ftp.icm.edu.pl/pub/Linux/distributions/alpine/edge/testing" >> /et
 
 
 ##system dependency
-apk --update add cmake gcc g++ linux-headers libffi-dev openssl-dev \
-	openblas openblas-dev \
-	automake \
+apk --update add \
 	subversion \
     tar gzip \
 	wget
