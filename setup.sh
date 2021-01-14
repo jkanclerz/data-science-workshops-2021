@@ -29,8 +29,7 @@ service docker start
 
 ##system dependency
 apk --update add python3 \
-    python3-dev \
-	py3-pyzmq
+    python3-dev
 
 ## variables 
 DS_ROOT=`dirname "$0"`
