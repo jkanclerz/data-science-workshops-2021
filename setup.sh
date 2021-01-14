@@ -75,7 +75,7 @@ cp ${DS_ROOT}/files/jupyter-cfg/jupyter_notebook_config.py ~/.jupyter/jupyter_no
 
 cd ${DS_ROOT}/dockers && bash build.sh
 
-
+docker stop $(docker ps -q) || true
 docker-compose -f ${DS_ROOT}/docker-compose.yaml up --no-recreate -d
 
 ## fill postgress
