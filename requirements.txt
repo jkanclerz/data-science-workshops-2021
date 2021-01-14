@@ -1,5 +1,5 @@
-jupyter
 wheel
+jupyter
 pandas
 seaborn
 matplotlib

@@ -1,0 +1,15 @@
+ _____________________
+/ ,-----------------. \        =================== Usefull commands ===============
+| |    1.05459 e -34| |        self-update           - bump workshop version
+| `-----------------' |        ip all                - list all network interfaces
+| [@ ] On/Off  ###### |        apt add {name}        - install package
+|              ###### |        python3 -m venv .venv - create virtualenvironment
+| [7] [8] [9] [C] [AC]|        source .venv/bin/activate   - activate venv
+|                     |        pip install {name}          - add python dependency
+| [4] [5] [6] [X] [%] |
+|                     |        ====================================================
+| [1] [2] [3] [+] [-] |        Cracow University of Economic
+|                     |        Data Science 2020/2021
+| [0] [.]  [EXP]  [=] |        (c) Jakub Kanclerz jakub.kanclerz@uek.krakow.pl
+\_____________________/
+
