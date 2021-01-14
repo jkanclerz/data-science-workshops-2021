@@ -1,7 +1,4 @@
-ARG debian_buster_image_tag=8-jre-slim
-FROM openjdk:${debian_buster_image_tag}
-
-# -- Layer: OS + Python 3.7
+FROM openjdk:8-jre-slim
 
 ARG shared_workspace=/opt/workspace
 
@@ -12,8 +9,6 @@ RUN mkdir -p ${shared_workspace} && \
     rm -rf /var/lib/apt/lists/*
 
 ENV SHARED_WORKSPACE=${shared_workspace}
-
-# -- Runtime
 
 VOLUME ${shared_workspace}
 CMD ["bash"]

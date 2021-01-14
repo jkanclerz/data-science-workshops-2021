@@ -30,3 +30,14 @@ docker build \
   --build-arg jupyterlab_version="${JUPYTERLAB_VERSION}" \
   -f jupyterlab.Dockerfile \
   -t jupyterlab .
+
+
+docker tag cluster-base jkanclerz/ds-base:latest
+docker tag spark-master jkanclerz/ds-spark-master:latest
+docker tag spark-worker jkanclerz/ds-spark-worker:latest
+docker tag jupyterlab jkanclerz/ds-jupyter:latest
+
+docker push jkanclerz/ds-base:latest
+docker push jkanclerz/ds-spark-master:latest
+docker push jkanclerz/ds-spark-worker:latest
+docker push jkanclerz/ds-jupyter:latest

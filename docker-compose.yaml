@@ -11,17 +11,17 @@ networks:
 
 services :
   jupyterlab:
-    image: jupyterlab
+    image: jkanclerz/ds-jupyter:latest
     container_name: jupyterlab
     ports:
-      - 8088:8888
+      - 8888:8888
     volumes:
       - ./:/opt/workspace
     networks:
       - cluster-network-1
   
   spark-master:
-    image: spark-master
+    image: jkanclerz/ds-spark-master:latest
     container_name: spark-master
     ports:
       - 8001:8080
@@ -32,7 +32,7 @@ services :
       - cluster-network-1
 
   spark-worker-1:
-    image: spark-worker
+    image: jkanclerz/ds-spark-worker:latest
     container_name: spark-worker-1
     environment:
       - SPARK_WORKER_CORES=2
@@ -47,7 +47,7 @@ services :
       - cluster-network-1
   
   spark-worker-2:
-    image: spark-worker
+    image: jkanclerz/ds-spark-worker:latest
     container_name: spark-worker-2
     environment:
       - SPARK_WORKER_CORES=2
