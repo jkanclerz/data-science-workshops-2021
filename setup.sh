@@ -87,12 +87,5 @@ echo "Your ip is: ${MY_IP}"
 echo -e "DB explorer available at: ${GREEN}http://${MY_IP}:8080${NC} in your browser"
 echo -e "PostgreSQL server available at: ${GREEN}http://${MY_IP}:5432${NC}"
 echo -e "MongoDB server available at: ${GREEN}http://${MY_IP}:27017${NC}"
-<<<<<<< HEAD
 echo -e "Finallu type: ${GREEN}http://${MY_IP}:8888${NC} in your browser"
-=======
-echo -e "To start jupyter visit: ${GREEN}cd ds-workshop${NC}"
-echo -e "then activate venv: ${GREEN}source .venv/bin/activate${NC}"
-echo -e "and type: ${GREEN}jupyter notebook${NC}"
-echo -e "Finallu type: ${GREEN}http://${MY_IP}:8088${NC} in your browser"
->>>>>>> 78f1c24f7b2dc834897ccfd5850ef2e89f4618fd
 echo -e "Happy codding ${GREEN}:)${NC}"
