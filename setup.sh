@@ -75,7 +75,6 @@ docker cp video_movieDetails.bson  mongodb:/tmp/details.bson
 docker exec mongodb bash -c "cd /tmp; mongorestore --db datascience --drop --collection movies details.bson"
 docker exec mongodb bash -c "cd /tmp; mongorestore --db datascience --drop --collection films video.bson"
 
-clear;
 
 python3 -c "import this";
 
