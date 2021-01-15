@@ -61,6 +61,7 @@ cp ${DS_ROOT}/files/jupyter-cfg/jupyter_notebook_config.json ~/.jupyter/jupyter_
 cp ${DS_ROOT}/files/jupyter-cfg/jupyter_notebook_config.py ~/.jupyter/jupyter_notebook_config.py
 
 docker stop $(docker ps -q) || true
+docker-compose -f ${DS_ROOT}/docker-compose.yaml pull
 docker-compose -f ${DS_ROOT}/docker-compose.yaml up --force-recreate -d
 
 ## fill postgress
