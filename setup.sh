@@ -61,7 +61,7 @@ cp ${DS_ROOT}/files/jupyter-cfg/jupyter_notebook_config.json ~/.jupyter/jupyter_
 cp ${DS_ROOT}/files/jupyter-cfg/jupyter_notebook_config.py ~/.jupyter/jupyter_notebook_config.py
 
 docker stop $(docker ps -q) || true
-docker-compose -f ${DS_ROOT}/docker-compose.yaml up --no-recreate -d
+docker-compose -f ${DS_ROOT}/docker-compose.yaml up --force-recreate -d
 
 ## fill postgress
 docker exec ds-workshop_datascience_1 bash -c "echo 'create database warehouse;' | psql -U datascience"
@@ -70,8 +70,8 @@ docker exec ds-workshop_datascience_1 bash -c 'gunzip < /events.sql.gz |  psql -
 wget -nc https://github.com/SouthbankSoftware/dbkoda-data/raw/master/SampleCollections/dump/SampleCollections/video_movies.bson
 wget -nc https://github.com/SouthbankSoftware/dbkoda-data/raw/master/SampleCollections/dump/SampleCollections/video_movieDetails.bson
 
-docker cp video_movies.bson  mongodb:/tmp/video.bson
-docker cp video_movieDetails.bson  mongodb:/tmp/details.bson
+docker cp ~/video_movies.bson  mongodb:/tmp/video.bson
+docker cp ~/video_movieDetails.bson  mongodb:/tmp/details.bson
 docker exec mongodb bash -c "cd /tmp; mongorestore --db datascience --drop --collection movies details.bson"
 docker exec mongodb bash -c "cd /tmp; mongorestore --db datascience --drop --collection films video.bson"
 
