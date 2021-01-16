@@ -16,6 +16,9 @@ RUN apt-get update -y && \
 RUN pip3 install jupyter
 RUN apt-get install -y wget tree unzip 
 
+RUN apt-get update -y && \
+    apt-get install -y python3-geopandas
+
 # -- Runtime
 
 EXPOSE 8888
